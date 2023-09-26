@@ -87,7 +87,7 @@ int systemInformation() {
     long num_cores = sysconf(_SC_NPROCESSORS_ONLN);
     long num_threads = sysconf(_SC_NPROCESSORS_CONF);
 
-    printf("-----Especificaciones del sistema-----\n");
+    printf("----- Especificaciones del sistema Bench C -----\n");
     printf("Número de núcleos(Number of Cores): %ld\n", num_cores);
     printf("Número de hilos(Number of Threads): %ld\n", num_threads);
     system("lscpu | grep 'Thread(s) per core'");
