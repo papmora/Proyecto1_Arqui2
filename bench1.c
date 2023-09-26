@@ -111,6 +111,8 @@ int systemInformation() {
 
     printf("Procesador:\n");
     system("lscpu | grep 'Model name'");
+
+    return 0;
 }
 
 int main() {
