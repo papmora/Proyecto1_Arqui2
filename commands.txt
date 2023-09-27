@@ -1,0 +1,35 @@
+Temporal access:
+sudo sysctl -w kernel.perf_event_paranoid=-1
+
+Verification:
+cat /proc/sys/kernel/kptr_restrict
+
+If Verification = 1:
+sudo sh -c 'echo 0 > /proc/sys/kernel/kptr_restrict'
+
+Restore Temporal access:
+sudo sysctl -w kernel.perf_event_paranoid=2
+
+Restore Kernel value:
+sudo sh -c 'echo 1 > /proc/sys/kernel/kptr_restrict'
+
+Permanent access:
+ - Add: kernel.perf_event_paranoid = -1 to /etc/sysctl.conf
+ - Command: sudo nano /etc/sysctl.conf
+
+Basic Info(usar :u):
+perf stat -e cycles,cache-misses,cache-references,context-switches ./bench1_c
+
+Basic Info N times:
+perf stat -e cycles,cache-misses,cache-references,context-switches -r 5 ./bench1_c
+
+Generate perf.data:
+ - Default: perf record ./name
+ - Overwrite: perf record -f ./name
+ - Specific Output: perf record -o outputname.data ./bench1_c
+ - Specific Event: perf record -e cache-misses -o report.data ./bench1_c
+ - Full: perf record -e cycles,cache-misses,cache-references,context-switches -o report.data ./bench1_c
+ 
+ Analizar perf.data:
+ - perf report -i outputname.data
+ - perf report -k /tmp/vmlinux -i outputname.data
