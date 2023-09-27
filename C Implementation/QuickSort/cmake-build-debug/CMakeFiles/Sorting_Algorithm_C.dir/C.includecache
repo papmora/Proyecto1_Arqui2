@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/dcama/Desktop/Sorting_Algorithm_C/main.c
+stdio.h
+-
+stdatomic.h
+-
+stdlib.h
+-
+time.h
+-
+
