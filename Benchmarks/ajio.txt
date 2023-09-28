@@ -1,0 +1,203 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 214  of event 'cycles'
+# Event count (approx.): 162160554
+#
+# Overhead  Command     Shared Object         Symbol                            
+# ........  ..........  ....................  ..................................
+#
+    48.19%  bench2_cpp  bench2_cpp            [.] sumArray
+     9.40%  bench2_cpp  bench2_cpp            [.] main
+     5.55%  bench2_cpp  [kernel.kallsyms]     [k] clear_page_rep
+     3.30%  bench2_cpp  [kernel.kallsyms]     [k] asm_exc_page_fault
+     3.07%  bench2_cpp  [kernel.kallsyms]     [k] release_pages
+     2.42%  bench2_cpp  [kernel.kallsyms]     [k] zap_pte_range
+     2.28%  bench2_cpp  [kernel.kallsyms]     [k] free_unref_page_commit
+     1.38%  bench2_cpp  [kernel.kallsyms]     [k] mt_find
+     1.28%  bench2_cpp  [kernel.kallsyms]     [k] get_page_from_freelist
+     1.20%  bench2_cpp  [kernel.kallsyms]     [k] exit_to_user_mode_prepare
+     1.19%  bench2_cpp  ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     1.08%  bench2_cpp  [kernel.kallsyms]     [k] do_user_addr_fault
+     1.05%  bench2_cpp  [kernel.kallsyms]     [k] handle_mm_fault
+     1.04%  bench2_cpp  [kernel.kallsyms]     [k] rmqueue_bulk
+     1.00%  bench2_cpp  [kernel.kallsyms]     [k] cgroup_rstat_updated
+     0.98%  bench2_cpp  [kernel.kallsyms]     [k] pmd_val
+     0.91%  bench2_cpp  ld-linux-x86-64.so.2  [.] _dl_relocate_object
+     0.83%  bench2_cpp  [kernel.kallsyms]     [k] blk_cgroup_congested
+     0.81%  bench2_cpp  [kernel.kallsyms]     [k] perf_iterate_ctx
+     0.78%  bench2_cpp  [kernel.kallsyms]     [k] __x86_return_thunk
+     0.61%  bench2_cpp  [kernel.kallsyms]     [k] sync_regs
+     0.60%  bench2_cpp  [kernel.kallsyms]     [k] account_system_index_time
+     0.58%  bench2_cpp  [kernel.kallsyms]     [k] __rcu_read_unlock
+     0.58%  bench2_cpp  [kernel.kallsyms]     [k] page_add_new_anon_rmap
+     0.57%  bench2_cpp  [kernel.kallsyms]     [k] __mod_zone_page_state
+     0.56%  bench2_cpp  [kernel.kallsyms]     [k] exc_page_fault
+     0.53%  bench2_cpp  [kernel.kallsyms]     [k] handle_pte_fault
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] exit_signals
+     0.49%  bench2_cpp  [kernel.kallsyms]     [k] __count_memcg_events
+     0.47%  bench2_cpp  [kernel.kallsyms]     [k] folio_add_lru_vma
+     0.46%  bench2_cpp  [kernel.kallsyms]     [k] count_memcg_events.constprop.0
+     0.45%  bench2_cpp  [kernel.kallsyms]     [k] _raw_spin_lock
+     0.45%  bench2_cpp  [kernel.kallsyms]     [k] lock_mm_and_find_vma
+     0.45%  bench2_cpp  [kernel.kallsyms]     [k] vma_alloc_folio
+     0.44%  bench2_cpp  [kernel.kallsyms]     [k] __irqentry_text_end
+     0.42%  bench2_cpp  [kernel.kallsyms]     [k] blake2s_update
+     0.42%  bench2_cpp  [kernel.kallsyms]     [k] __mod_memcg_lruvec_state
+     0.42%  bench2_cpp  [kernel.kallsyms]     [k] get_mem_cgroup_from_mm
+     0.42%  bench2_cpp  [kernel.kallsyms]     [k] folio_add_lru
+     0.41%  bench2_cpp  [kernel.kallsyms]     [k] __mod_node_page_state
+     0.40%  bench2_cpp  [kernel.kallsyms]     [k] __handle_mm_fault
+     0.40%  bench2_cpp  [kernel.kallsyms]     [k] __folio_alloc
+     0.39%  bench2_cpp  [kernel.kallsyms]     [k] __page_set_anon_rmap
+     0.38%  bench2_cpp  [kernel.kallsyms]     [k] __rcu_read_lock
+     0.36%  bench2_cpp  [kernel.kallsyms]     [k] folio_batch_move_lru
+     0.14%  bench2_cpp  [kernel.kallsyms]     [k] mem_cgroup_from_task
+     0.10%  perf-exec   [kernel.kallsyms]     [k] perf_event_addr_filters_exec
+     0.09%  bench2_cpp  libc.so.6             [.] clone3
+     0.07%  bench2_cpp  libc.so.6             [.] __pthread_clockjoin_ex
+     0.07%  bench2_cpp  [kernel.kallsyms]     [k] calculate_sigpending
+     0.01%  bench2_cpp  [kernel.kallsyms]     [k] _raw_spin_lock_irq
+     0.01%  bench2_cpp  [kernel.kallsyms]     [k] recalc_sigpending
+     0.01%  perf-exec   [kernel.kallsyms]     [k] perf_event_exec
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] __get_user_8
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] mem_cgroup_handle_over_high
+
+
+# Samples: 137  of event 'cache-misses'
+# Event count (approx.): 1313067
+#
+# Overhead  Command     Shared Object         Symbol                                 
+# ........  ..........  ....................  .......................................
+#
+    45.04%  bench2_cpp  bench2_cpp            [.] sumArray
+     6.60%  bench2_cpp  [kernel.kallsyms]     [k] clear_page_rep
+     6.24%  bench2_cpp  [kernel.kallsyms]     [k] __free_one_page
+     4.68%  bench2_cpp  bench2_cpp            [.] main
+     3.23%  bench2_cpp  [kernel.kallsyms]     [k] asm_exc_page_fault
+     2.03%  bench2_cpp  [kernel.kallsyms]     [k] __x64_sys_read
+     2.02%  bench2_cpp  libstdc++.so.6.0.30   [.] std::ios_base::Init::~Init
+     1.97%  bench2_cpp  [kernel.kallsyms]     [k] chacha_permute
+     1.77%  bench2_cpp  [kernel.kallsyms]     [k] memset
+     1.65%  bench2_cpp  [kernel.kallsyms]     [k] exc_page_fault
+     1.47%  bench2_cpp  [kernel.kallsyms]     [k] perf_iterate_ctx
+     1.41%  bench2_cpp  [kernel.kallsyms]     [k] __x86_return_thunk
+     1.35%  bench2_cpp  [kernel.kallsyms]     [k] percpu_counter_add_batch
+     1.25%  bench2_cpp  [kernel.kallsyms]     [k] error_entry
+     1.22%  bench2_cpp  [kernel.kallsyms]     [k] pmd_val
+     1.19%  bench2_cpp  [kernel.kallsyms]     [k] handle_mm_fault
+     1.09%  bench2_cpp  [kernel.kallsyms]     [k] psi_group_change
+     1.02%  bench2_cpp  [kernel.kallsyms]     [k] find_vma
+     1.02%  bench2_cpp  [kernel.kallsyms]     [k] lru_gen_add_folio
+     0.91%  bench2_cpp  [kernel.kallsyms]     [k] rmqueue
+     0.84%  bench2_cpp  [kernel.kallsyms]     [k] mtree_range_walk
+     0.78%  bench2_cpp  [kernel.kallsyms]     [k] x86_reserve_hardware
+     0.78%  bench2_cpp  [kernel.kallsyms]     [k] lock_mm_and_find_vma
+     0.77%  bench2_cpp  [kernel.kallsyms]     [k] lru_add_fn
+     0.71%  bench2_cpp  [kernel.kallsyms]     [k] __mod_memcg_lruvec_state
+     0.70%  bench2_cpp  [kernel.kallsyms]     [k] do_user_addr_fault
+     0.68%  bench2_cpp  [kernel.kallsyms]     [k] mt_find
+     0.66%  bench2_cpp  [kernel.kallsyms]     [k] __cgroup_throttle_swaprate
+     0.60%  bench2_cpp  [kernel.kallsyms]     [k] handle_pte_fault
+     0.60%  bench2_cpp  [kernel.kallsyms]     [k] mas_wr_walk
+     0.58%  bench2_cpp  [kernel.kallsyms]     [k] consume_stock
+     0.54%  bench2_cpp  [kernel.kallsyms]     [k] pud_val
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] rb_insert_color
+     0.48%  bench2_cpp  ld-linux-x86-64.so.2  [.] _dl_fixup
+     0.48%  bench2_cpp  [kernel.kallsyms]     [k] __default_send_IPI_dest_field
+     0.45%  bench2_cpp  [kernel.kallsyms]     [k] exit_to_user_mode_prepare
+     0.41%  bench2_cpp  [kernel.kallsyms]     [k] folio_batch_move_lru
+     0.34%  bench2_cpp  [kernel.kallsyms]     [k] rmqueue_bulk
+     0.33%  bench2_cpp  [kernel.kallsyms]     [k] __rcu_read_unlock
+     0.32%  bench2_cpp  [kernel.kallsyms]     [k] count_memcg_events.constprop.0
+     0.31%  bench2_cpp  [kernel.kallsyms]     [k] __rcu_read_lock
+     0.26%  bench2_cpp  [kernel.kallsyms]     [k] get_random_u64
+     0.22%  bench2_cpp  [kernel.kallsyms]     [k] __alloc_pages
+     0.17%  bench2_cpp  libstdc++.so.6.0.30   [.] std::chrono::_V2::system_clock::now
+     0.16%  bench2_cpp  [kernel.kallsyms]     [k] vma_alloc_folio
+     0.03%  bench2_cpp  [kernel.kallsyms]     [k] mem_cgroup_from_task
+     0.03%  bench2_cpp  [kernel.kallsyms]     [k] sync_regs
+     0.02%  bench2_cpp  libc.so.6             [.] __pthread_clockjoin_ex
+     0.02%  perf-exec   [kernel.kallsyms]     [k] __set_task_comm
+     0.01%  bench2_cpp  libc.so.6             [.] clone3
+     0.01%  bench2_cpp  [kernel.kallsyms]     [k] calculate_sigpending
+     0.01%  perf-exec   [kernel.kallsyms]     [k] perf_event_addr_filters_exec
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] __get_user_8
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] mem_cgroup_handle_over_high
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] _raw_spin_lock_irq
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] recalc_sigpending
+     0.00%  perf-exec   [kernel.kallsyms]     [k] perf_event_exec
+
+
+# Samples: 211  of event 'cache-references'
+# Event count (approx.): 11411077
+#
+# Overhead  Command     Shared Object         Symbol                         
+# ........  ..........  ....................  ...............................
+#
+    36.18%  bench2_cpp  bench2_cpp            [.] sumArray
+    21.79%  bench2_cpp  bench2_cpp            [.] main
+     7.38%  bench2_cpp  [kernel.kallsyms]     [k] asm_exc_page_fault
+     6.70%  bench2_cpp  [kernel.kallsyms]     [k] clear_page_rep
+     3.53%  bench2_cpp  [kernel.kallsyms]     [k] mtree_range_walk
+     1.92%  bench2_cpp  [kernel.kallsyms]     [k] lru_add_fn
+     1.72%  bench2_cpp  [kernel.kallsyms]     [k] rmqueue
+     1.27%  bench2_cpp  [kernel.kallsyms]     [k] down_read_trylock
+     1.11%  bench2_cpp  [kernel.kallsyms]     [k] uncharge_folio
+     1.08%  bench2_cpp  [kernel.kallsyms]     [k] rmqueue_bulk
+     1.06%  bench2_cpp  [kernel.kallsyms]     [k] sync_regs
+     1.02%  bench2_cpp  [kernel.kallsyms]     [k] __x86_return_thunk
+     1.01%  bench2_cpp  [kernel.kallsyms]     [k] free_unref_page_list
+     0.98%  bench2_cpp  [kernel.kallsyms]     [k] pud_val
+     0.94%  bench2_cpp  [kernel.kallsyms]     [k] memset
+     0.63%  bench2_cpp  [kernel.kallsyms]     [k] _raw_spin_lock
+     0.60%  bench2_cpp  [kernel.kallsyms]     [k] get_page_from_freelist
+     0.59%  bench2_cpp  [kernel.kallsyms]     [k] try_charge_memcg
+     0.57%  bench2_cpp  libc.so.6             [.] __cxa_finalize
+     0.53%  bench2_cpp  ld-linux-x86-64.so.2  [.] _dl_lookup_direct
+     0.52%  bench2_cpp  ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     0.51%  bench2_cpp  [kernel.kallsyms]     [k] error_entry
+     0.51%  bench2_cpp  [kernel.kallsyms]     [k] policy_node
+     0.51%  bench2_cpp  [kernel.kallsyms]     [k] copy_user_generic_string
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] __x86_indirect_thunk_r14
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] pmd_val
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] percpu_counter_add_batch
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] lru_gen_add_folio
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] mt_find
+     0.50%  bench2_cpp  [kernel.kallsyms]     [k] handle_mm_fault
+     0.48%  bench2_cpp  [kernel.kallsyms]     [k] _raw_spin_unlock
+     0.48%  bench2_cpp  [kernel.kallsyms]     [k] __raw_spin_lock_irqsave
+     0.47%  bench2_cpp  [kernel.kallsyms]     [k] page_add_new_anon_rmap
+     0.44%  bench2_cpp  [kernel.kallsyms]     [k] do_user_addr_fault
+     0.43%  bench2_cpp  [kernel.kallsyms]     [k] up_read
+     0.36%  bench2_cpp  [kernel.kallsyms]     [k] __cond_resched
+     0.36%  bench2_cpp  [kernel.kallsyms]     [k] rcu_segcblist_pend_cbs
+     0.30%  bench2_cpp  [kernel.kallsyms]     [k] __perf_addr_filters_adjust
+     0.26%  bench2_cpp  [kernel.kallsyms]     [k] _copy_from_user
+     0.24%  bench2_cpp  [kernel.kallsyms]     [k] try_grab_folio
+     0.18%  bench2_cpp  [kernel.kallsyms]     [k] __alloc_pages
+     0.12%  bench2_cpp  [kernel.kallsyms]     [k] vma_alloc_folio
+     0.08%  bench2_cpp  [kernel.kallsyms]     [k] flush_signal_handlers
+     0.06%  bench2_cpp  libc.so.6             [.] __pthread_clockjoin_ex
+     0.02%  bench2_cpp  [kernel.kallsyms]     [k] _raw_spin_lock_irq
+     0.01%  bench2_cpp  [kernel.kallsyms]     [k] recalc_sigpending
+     0.01%  perf-exec   [kernel.kallsyms]     [k] perf_event_exec
+     0.01%  bench2_cpp  [kernel.kallsyms]     [k] calculate_sigpending
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] __get_user_8
+     0.00%  bench2_cpp  [kernel.kallsyms]     [k] mem_cgroup_handle_over_high
+
+
+# Samples: 3  of event 'context-switches'
+# Event count (approx.): 3
+#
+# Overhead  Command     Shared Object      Symbol        
+# ........  ..........  .................  ..............
+#
+   100.00%  bench2_cpp  [kernel.kallsyms]  [k] __schedule
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#
