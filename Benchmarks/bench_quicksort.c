@@ -4,11 +4,13 @@
 #include <pthread.h>
 #include <stdatomic.h>
 
-int MAX_SIZE;
+#define CACHE_LINE_SIZE 64
+
+#define MAX_SIZE 16
 
 int MAX_THREADS;
 
-atomic_int *array;
+atomic_int array[MAX_SIZE] __attribute__((aligned(CACHE_LINE_SIZE)));
 
 void print(atomic_int *array_p,int size)
 {
@@ -106,17 +108,24 @@ void quicksort(int *limits)
 int main(int argc, char *argv[])
 {
     MAX_THREADS = atoi(argv[1]);
-    MAX_SIZE = atoi(argv[2]);
+    //MAX_SIZE = atoi(argv[2]);
 
-    array= malloc(sizeof(atomic_int)* MAX_SIZE);
+    //array= malloc(sizeof(atomic_int)* MAX_SIZE+CACHE_LINE_SIZE);
 
     srand(time(NULL));
 
     for (int i = 0; i<MAX_SIZE;i++)
     {
         int value = 0+rand()%256;
-        atomic_store(&array[i],value);
+
+        array[i] = value;
+
+        //atomic_store(&array[i],value);
     }
+    printf("TOTAL THREADS: %d\n\n",MAX_THREADS);
+
+    //printf("\nOriginal Array: \n");
+    //print(array,MAX_SIZE);
 
     pthread_t threads [MAX_THREADS];
 
@@ -130,6 +139,10 @@ int main(int argc, char *argv[])
         args[0]=i*size;
         args[1]=i*size+size-1;
 
+
+        //args[0]=0;
+        //args[1]=size-1;
+
         pthread_create(&threads[i], NULL, (void *(*)(void *)) &quicksort, args);
     }
 
@@ -137,6 +150,11 @@ int main(int argc, char *argv[])
     {
         pthread_join(threads[i],NULL);
     }
+
+    printf("\nSorted Array: \n");
+    print(array,MAX_SIZE);
+
+    //free(array);
 
     return 0;
 }

@@ -1,3 +1,0 @@
-/home/dcamachog/Desktop/Proyecto Arqui/C Implementation/QuickSort/cmake-build-debug/CMakeFiles/Sorting_Algorithm_C.dir
-/home/dcamachog/Desktop/Proyecto Arqui/C Implementation/QuickSort/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/dcamachog/Desktop/Proyecto Arqui/C Implementation/QuickSort/cmake-build-debug/CMakeFiles/rebuild_cache.dir

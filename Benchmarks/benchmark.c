@@ -90,21 +90,27 @@ void benchmark(const char *bench, int times) {
     // UwU
     systemInformation(bench);
 
-    char perf_report_command[100];
-    char perf_variations_command[100];
+    char perf_report_command[200];
+    char perf_variations_command[200];
     
-    if(strcmp(bench, "bench_quicksort")==0)
+    if(strcmp(bench, "bench_quicksort")==0 || strcmp(bench, "bench_slowsort")==0)
     {
         for (int i = 1; i <= 8; i=i*2) 
         {
 
             printf("\nRUNNING ON %d THREADS\n",i);
 
-            //sprintf(perf_report_command, "perf record -e cycles,cache-misses,cache-references,context-switches -o %s_%d.data ./%s %d", bench, i, bench,i);
+            //sprintf(perf_report_command, "perf record -e cycles,cache-misses,cache-references,context-switches -o %s_%d.data ./%s %d %d", bench, i, bench,i,16);
 
-            sprintf(perf_variations_command, "perf stat -e cycles,cache-misses,cache-references,context-switches -r %d ./%s %d", 1, bench,i);
+            //sprintf(perf_variations_command, "perf stat -e cycles,cache-misses,cache-references,context-switches -r %d ./%s %d %d", 1, bench,i,i*8);
 
-            system(perf_variations_command);
+            sprintf(perf_report_command, "perf c2c record -a ./%s %d %d",bench,i,16);            
+
+
+            printf("Perf command: %s\n", perf_report_command);
+
+            // Run the perf command
+            system(perf_report_command);
 
         
         }
@@ -148,7 +154,16 @@ int main(int argc, char *argv[]) {
     } else if (strcmp(bench, "bench_quicksort") == 0) {
         benchmark("bench_quicksort", times);
 
-    } else {
+    } else if (strcmp(bench, "bench_slowsort") == 0) {
+        benchmark("bench_slowsort", times);
+
+    } else if (strcmp(bench, "bench_bogosort") == 0) {
+        benchmark("bench_bogosort", times);
+
+    }else if (strcmp(bench, "bench_directsharing") == 0) {
+        benchmark("bench_directsharing", times);
+
+    }else {
         printf("Invalid option: %s\n", bench);
         return 1;
     }
