@@ -18,7 +18,7 @@ Permanent access:
  - Command: sudo nano /etc/sysctl.conf
 
 Basic Info(usar :u):
-perf stat -e cycles,cache-misses,cache-references,context-switches ./bench1_c
+perf stat -e cycles,L1-dcache-loads,L1-dcache-load-misses,cache-misses,cache-references,context-switches ./bench1_c
 
 Basic Info N times:
 perf stat -e cycles,cache-misses,cache-references,context-switches -r 5 ./bench1_c
@@ -28,7 +28,7 @@ Generate perf.data:
  - Overwrite: perf record -f ./name
  - Specific Output: perf record -o outputname.data ./bench1_c
  - Specific Event: perf record -e cache-misses -o report.data ./bench1_c
- - Full: perf record -e cycles,cache-misses,cache-references,context-switches -o report.data ./bench1_c
+ - Full: perf record -e cycles,L1-dcache-loads,L1-dcache-load-misses,cache-misses,cache-references,context-switches -o bench1_c.data ./bench1_c
  
  Analizar perf.data:
  - perf report -i outputname.data

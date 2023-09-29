@@ -48,27 +48,6 @@ int main() {
         sharedArray[i].data = 0;
     }
 
-    // Medir el tiempo de ejecución de la versión single-thread
-    gettimeofday(&start, NULL);
-
-    for (intptr_t i = 0; i < NUM_THREADS; i++) {
-        pthread_create(&threads[i], NULL, writeToSharedArray, (void *)i);
-    }
-
-    for (int i = 0; i < NUM_THREADS; i++) {
-        pthread_join(threads[i], NULL);
-    }
-
-    gettimeofday(&end, NULL);
-    elapsed = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec);
-
-    printf("Single-Thread Execution Time: %" PRIu64 " microseconds\n", elapsed);
-
-    // Reinicializar el arreglo compartido
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        sharedArray[i].data = 0;
-    }
-
     // Medir el tiempo de ejecución de la versión multi-thread
     gettimeofday(&start, NULL);
 
