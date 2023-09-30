@@ -1,5 +1,6 @@
 #include<stdatomic.h>
 #include <pthread.h>
+#include <stdio.h>
 
 int ITERATIONS = 1<<27;
 
@@ -23,9 +24,10 @@ int main()
 
     counter = 0;
 
-    printf("%d\n\n",&counter);
-
     pthread_t threads[MAX_THREADS];
+
+    printf("Address of ITERATIONS_PER_THREAD %p\n", (void*)&ITERATIONS_PER_THREAD);
+    printf("Address of COUNTER %p\n\n", (void*)&counter);
 
     for(int i = 0; i<MAX_THREADS; i++)
     {

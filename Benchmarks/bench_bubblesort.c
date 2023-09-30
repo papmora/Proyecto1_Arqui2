@@ -7,7 +7,9 @@
 
 #define MAX_THREADS  8
 
-atomic_int array[MAX_SIZE];
+#define CACHE_LINE_SIZE 64
+
+atomic_int array[CACHE_LINE_SIZE/sizeof(atomic_int)];
 
 int enables[MAX_SIZE]={0};
 
@@ -147,11 +149,9 @@ int main(int argc, char *argv[])
 
     srand(time(NULL));
 
-    int temp[8] = {30,5,24 ,25, 26,27,28,29};
-
     for (int i = 0; i<MAX_SIZE;i++)
     {
-        int value = 0+rand()%256;
+        int value = 16777215+rand()%268435456;
 
         atomic_init(&array[i],value);
 
@@ -186,8 +186,6 @@ int main(int argc, char *argv[])
         finishes[i]=1;
         pthread_join(threads[i],NULL);
     }
-
-    //printf("\nSorted Array: \n");
 
     printf("[");
 
