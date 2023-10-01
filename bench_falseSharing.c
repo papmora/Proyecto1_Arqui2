@@ -2,66 +2,86 @@
 #include <stdatomic.h>
 #include <pthread.h>
 #include <time.h>
+#include <stdlib.h>
 
-volatile int isRunning = 1;
+#define NUM_ITERATIONS (1 << 27)
 
-void* work(void* arg) {
-    atomic_int* a = (atomic_int*)arg;
-    // for (int i = 0; i < 100000; ++i) {
-    //     atomic_fetch_add(a, 1);
-    // }
-    while (isRunning) {
-        atomic_fetch_add(a, 1);
+#define NUM_THREADS 1
+
+atomic_int counters[NUM_THREADS];
+
+// Final Value
+atomic_int finalValue = ATOMIC_VAR_INIT(0);
+
+void init() {
+
+    for (int i = 0; i < NUM_THREADS; i++) {
+        
+        int value = 0;
+        atomic_init(&counters[i],value);
     }
+    
+}
+
+// Incrementing Function
+void* increase(void* arg) {
+    
+    int threadId = *((int*)arg);
+
+    int elementsPerThread = NUM_ITERATIONS / NUM_THREADS;
+
+    // Increments
+    for (int i = 0; i < elementsPerThread; i++) {
+        
+        atomic_fetch_add(&counters[threadId], 1);
+
+    }
+    
+    // Final value addition
+    atomic_fetch_add(&finalValue, atomic_load(&counters[threadId]));
+
+    
+    
     return NULL;
 }
 
-void falseSharing(int durationSeconds) {
-    // Create four atomic integers
-    atomic_int a = ATOMIC_VAR_INIT(0);
-    atomic_int b = ATOMIC_VAR_INIT(0);
-    atomic_int c = ATOMIC_VAR_INIT(0);
-    atomic_int d = ATOMIC_VAR_INIT(0);
-
-    pthread_t t1, t2, t3, t4;
-
-    // Create four threads, each working on a different atomic variable
-    pthread_create(&t1, NULL, work, &a);
-    pthread_create(&t2, NULL, work, &b);
-    pthread_create(&t3, NULL, work, &c);
-    pthread_create(&t4, NULL, work, &d);
-
-    // Esperar durante el tiempo especificado
-    sleep(durationSeconds);
-
-    // Detener los hilos
-    isRunning = 0;
-
-    // Join the four threads
-    pthread_join(t1, NULL);
-    pthread_join(t2, NULL);
-    pthread_join(t3, NULL);
-    pthread_join(t4, NULL);
-}
-
-
 void print() {
-    atomic_int a = ATOMIC_VAR_INIT(0);
-    atomic_int b = ATOMIC_VAR_INIT(0);
-    atomic_int c = ATOMIC_VAR_INIT(0);
-    atomic_int d = ATOMIC_VAR_INIT(0);
 
-    printf("Address of atomic_int a - %p\n", (void*)&a);
-    printf("Address of atomic_int b - %p\n", (void*)&b);
-    printf("Address of atomic_int c - %p\n", (void*)&c);
-    printf("Address of atomic_int d - %p\n", (void*)&d);
+    for (int i = 0; i < NUM_THREADS; i++) {
 
+        printf("Counters[%d] - %p - %d\n", i, (void*)&counters[i], counters[i]);
+    }
+
+    atomic_int value = atomic_load(&finalValue);
+    printf("Final Value - %d\n", value);
 }
 
 int main() {
-    int durationSeconds = 3;
-    falseSharing(durationSeconds);
+    
+    pthread_t threads[NUM_THREADS];
+
+    init();
+
+    int threadsIDs[NUM_THREADS];
+
+    // Threads creations
+    for (int i = 0; i < NUM_THREADS; i++) {
+        
+        // IDs Init
+        threadsIDs[i] = i;
+
+        // Threads Creation
+        pthread_create(&threads[i], NULL, increase, &threadsIDs[i]);
+
+    }
+
+    for (int i = 0; i < NUM_THREADS; i++) {
+        
+        pthread_join(threads[i], NULL);
+    }
+
     print();
+
     return 0;
 }
 
