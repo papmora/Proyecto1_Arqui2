@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "chrono": "c",
         "algorithm": "c",
-        "array": "c"
+        "array": "c",
+        "stdatomic.h": "c"
     }
 }

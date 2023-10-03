@@ -5,10 +5,13 @@ CXXFLAGS = -Wall -lpthread -O3
 
 .PHONY: all clean
 
-all: benchmarkOne app test
+all: benchmarkOne benchmarkTwo app 
 
 benchmarkOne: benchmarkOne.c
 	$(CC) $(CFLAGS) -o $@ $^
+
+benchmarkTwo: benchmarkTwo.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 app: app.c
 	$(CC) $(CFLAGS) -o $@ $^
