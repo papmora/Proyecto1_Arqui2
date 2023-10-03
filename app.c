@@ -21,7 +21,7 @@ int systemInformation(const char *code) {
         return 1;
     }
 
-    // Obtencion del size de una Linea de cache de L1 - Datos
+    // Obtencion del size de una Linea de cache de L2 - Datos
     long l2_cache_line_size = sysconf(_SC_LEVEL2_CACHE_LINESIZE);
     // Obtencion del size de una Instancia de cache de L1 - Datos
     long l2_cache_size = sysconf(_SC_LEVEL2_CACHE_SIZE);
@@ -32,8 +32,9 @@ int systemInformation(const char *code) {
         return 1;
     }
 
-    // Obtencion del size de una Linea de cache de L1 - Datos
+    // Obtencion del size de una Linea de cache de L3 - Datos
     long l3_cache_line_size = sysconf(_SC_LEVEL3_CACHE_LINESIZE);
+    
     // Obtencion del size de una Instancia de cache de L1 - Datos
     long l3_cache_size = sysconf(_SC_LEVEL3_CACHE_SIZE);
 
@@ -94,32 +95,38 @@ void benchmark(const char *bench, int times) {
     char perf_variations_command[100];
 
     for (int i = 1; i <= times; i++) {
-        sprintf(perf_report_command, "perf record -e cycles,cache-misses,cache-references,context-switches -o %s_%d.data ./%s", bench, i, bench);
+
+        sprintf(perf_variations_command, "perf stat -d ./%s %d", bench, i);
+        system(perf_variations_command);
+
+        sprintf(perf_report_command, "perf c2c record ./%s %d", bench, i);
         system(perf_report_command);
     }
-    sprintf(perf_variations_command, "perf stat -e cycles,cache-misses,cache-references,context-switches -r %d ./%s", times, bench);
-    system(perf_variations_command);
+    
 }
 
 int main(int argc, char *argv[]) {
 
 
-    if (argc != 4) {
-        printf("Usage: %s <benchmark> <times> <cpus>\n", argv[0]);
+    if (argc != 3) {
+        printf("Usage: %s <benchmark> <times>\n", argv[0]);
         printf("Benchmark options: bench1_c or bench2_cpp\n");
         return 1;
     }
 
     // Selected Benchmark:
     const char *bench = argv[1];
+    printf("This: %s\n", bench);
     // Repetitions:
     int times = atoi(argv[2]);
+
     // Number of CPUs:
     // int cpus = atoi(argv[3]);
 
     // Conditional:
-    if (strcmp(bench, "bench1_c") == 0) {
-        benchmark("bench1_c", times);
+    if (strcmp(bench, "bench_falseSharing") == 0) {
+        printf("Entreee\n");
+        benchmark("bench_falseSharing", times);
 
     } else if (strcmp(bench, "bench2_cpp") == 0) {
         benchmark("bench2_cpp", times);
