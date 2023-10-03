@@ -77,7 +77,9 @@ int main(int argc, char* argv[]) {
     NUM_THREADS = atoi(argv[1]);
 
     if (NUM_THREADS <= 0 || NUM_THREADS > MAX_THREADS) {
+
         printf("Invalid number of threads. Maximum supported: %ld\n", MAX_THREADS);
+        
         return 1;
     }
 
