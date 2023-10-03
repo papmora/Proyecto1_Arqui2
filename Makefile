@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -lpthread -O3
 
 .PHONY: all clean
 
-all: benchmarkOne benchmarkTwo app 
+all: benchmarkOne benchmarkTwo controller systemInfo
 
 benchmarkOne: benchmarkOne.c
 	$(CC) $(CFLAGS) -o $@ $^
@@ -13,8 +13,12 @@ benchmarkOne: benchmarkOne.c
 benchmarkTwo: benchmarkTwo.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-app: app.c
+
+controller: controller.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+systemInfo: systemInfo.c
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -f app benchmarkOne perf.data perf.data.old
+	rm -f controller benchmarkOne systemInfo perf.data perf.data.old

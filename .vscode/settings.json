@@ -4,6 +4,6 @@
         "chrono": "c",
         "algorithm": "c",
         "array": "c",
-        "stdatomic.h": "c"
+        "string.h": "c"
     }
 }

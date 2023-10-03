@@ -34,7 +34,7 @@ int systemInformation(const char *code) {
 
     // Obtencion del size de una Linea de cache de L3 - Datos
     long l3_cache_line_size = sysconf(_SC_LEVEL3_CACHE_LINESIZE);
-    
+
     // Obtencion del size de una Instancia de cache de L1 - Datos
     long l3_cache_size = sysconf(_SC_LEVEL3_CACHE_SIZE);
 
@@ -57,85 +57,44 @@ int systemInformation(const char *code) {
     long num_cores = sysconf(_SC_NPROCESSORS_ONLN);
     long num_threads = sysconf(_SC_NPROCESSORS_CONF);
 
-    printf("----- Especificaciones del sistema para %s -----\n", code);
-    printf("Número de núcleos(Number of Cores): %ld\n", num_cores);
-    printf("Número de hilos(Number of Threads): %ld\n", num_threads);
+    printf("----- Especificaciones del sistema para %s -----\n\n", code);
+    printf("Number of Cores: %21ld\n", num_cores);
+    printf("Number of Threads: %19ld\n", num_threads);
     system("lscpu | grep 'Thread(s) per core'");
     system("lscpu | grep 'Core(s) per socket'");
-    printf("Cantidad total de memoria RAM: %.2f GB\n", total_memory_gb);
+    printf("RAM Memory: %29.2f GB\n", total_memory_gb);
     // Cache L1:
     printf("Cache L1:\n");
-    printf("Tamaño de línea: %ld bytes\n", l1_cache_line_size);
-    printf("Tamaño de Instancia: %ld bytes\n", l1_cache_size);
+    printf("Line size: %ld bytes\n", l1_cache_line_size);
+    printf("Instance size: %ld bytes\n", l1_cache_size);
     system("lscpu | grep 'L1d cache'");
     // Cache L2:
     printf("Cache L2:\n");
-    printf("Tamaño de línea: %ld bytes\n", l2_cache_line_size);
-    printf("Tamaño de Instancia: %ld bytes\n", l2_cache_size);
+    printf("Line size: %ld bytes\n", l2_cache_line_size);
+    printf("Instance size: %ld bytes\n", l2_cache_size);
     system("lscpu | grep 'L2 cache'");
     // Cache L3:
     printf("Cache L3:\n");
     printf("Tamaño de línea: %ld bytes\n", l3_cache_line_size);
-    printf("Tamaño de Instancia: %ld bytes\n", l3_cache_size);
+    printf("Instance size: %ld bytes\n", l3_cache_size);
     system("lscpu | grep 'L3 cache'");
 
-    printf("Procesador:\n");
+    printf("Processor:\n");
     system("lscpu | grep 'Model name'");
 
     return 0;
 }
 
-// Execution
-void benchmark(const char *bench, int times) {
-
-    // UwU
-    systemInformation(bench);
-
-    char perf_report_command[100];
-    char perf_variations_command[100];
-
-    for (int i = 1; i <= times; i++) {
-
-        sprintf(perf_variations_command, "perf stat -d ./%s %d", bench, i);
-        system(perf_variations_command);
-
-        sprintf(perf_report_command, "perf c2c record ./%s %d", bench, i);
-        system(perf_report_command);
-    }
-    
-}
-
 int main(int argc, char *argv[]) {
 
+    if (argc != 2) {
 
-    if (argc != 3) {
-        printf("Usage: %s <benchmark> <times>\n", argv[0]);
-        printf("Benchmark options: bench1_c or bench2_cpp\n");
+        printf("Usage: %s <systemInfo> <benchName>\n", argv[0]);
         return 1;
     }
 
-    // Selected Benchmark:
     const char *bench = argv[1];
     printf("This: %s\n", bench);
-    // Repetitions:
-    int times = atoi(argv[2]);
 
-    // Number of CPUs:
-    // int cpus = atoi(argv[3]);
-
-    // Conditional:
-    if (strcmp(bench, "bench_falseSharing") == 0) {
-        printf("Entreee\n");
-        benchmark("bench_falseSharing", times);
-
-    } else if (strcmp(bench, "bench2_cpp") == 0) {
-        benchmark("bench2_cpp", times);
-
-    } else {
-        printf("Invalid option: %s\n", bench);
-        return 1;
-    }
-
-    printf("Benchmarks completed\n");
-    return 0;
+    systemInformation(bench);
 }
