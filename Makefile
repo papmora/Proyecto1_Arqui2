@@ -1,19 +1,26 @@
 CC = gcc
 CXX = g++
-CFLAGS = -Wall
-CXXFLAGS = -Wall
+CFLAGS = -Wall -lpthread
+CXXFLAGS = -Wall -lpthread
 
 .PHONY: all clean
 
-all: bench1_c bench2_cpp
+all: benchmarkOne benchmarkTwo controller systemInfo delete
 
-bench1_c: bench1.c
+benchmarkOne: benchmarkOne.c
 	$(CC) $(CFLAGS) -o $@ $^
-	./$@
 
-bench2_cpp: bench2.cpp
+benchmarkTwo: benchmarkTwo.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^
-	./$@
+
+controller: controller.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+systemInfo: systemInfo.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+delete: delete.c
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -f bench1_c bench2_cpp
+	rm -f controller benchmarkOne benchmarkTwo systemInfo delete perf.data perf.data.old
