@@ -7,6 +7,9 @@
 // Adjust the number of threads based on your requirements
 #define MAX_THREADS 16
 
+// Defalut Thread value( - Single Thread - )
+int NUM_THREADS = 1;
+
 // Final Value
 volatile int finalValue = 0;
 
@@ -19,7 +22,9 @@ struct ThreadData {
 void* increase(void* arg) {
     struct ThreadData* data = (struct ThreadData*)arg;
 
-    for (int i = 0; i < NUM_ITERATIONS; i++) {
+    int elementsPerThread = NUM_ITERATIONS / MAX_THREADS;
+
+    for (int i = 0; i < elementsPerThread; i++) {
         data->counter++;
     }
 
