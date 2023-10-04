@@ -26,10 +26,10 @@ def main_menu():
         choice = input("Type an option and press ENTER: ")
 
         if choice == '1':
-            os.system(f"./controller benchmarkOne 1")
+            os.system(f"./controller benchmarkTwo 1")
 
         elif choice == '2':
-            os.system(f"./controller benchmarkOne {cores}")
+            os.system(f"./controller benchmarkTwo {cores}")
 
         elif choice == '3':
             break

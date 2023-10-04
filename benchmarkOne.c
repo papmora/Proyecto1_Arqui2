@@ -107,6 +107,10 @@ int main(int argc, char* argv[]) {
 
     print();
 
+    // system("{ /usr/bin/time -f 'Tiempo real: %e s, Tiempo de CPU: %U s, Memoria: %M KB' perf stat -d ./benchmarkOne 8 2>&1 | grep 'L1-dcache-loads\|L1-dcache-load-misses\|Tiempo';echo '$';} | sed -e 's/\x1B\[[0-9;]\+[A-Za-z]//g' -e '/^$/d' >> output.txt");
+    // system("{ /usr/bin/time -f \"Tiempo real: %e s, Tiempo de CPU: %U s, Memoria: %M KB\" perf stat -d ./benchmarkOne 8 2>&1 | grep \"L1-dcache-loads\\|L1-dcache-load-misses\\|Tiempo\"; echo '$';} | sed -e 's/\\x1B\\[[0-9;]\\+[A-Za-z]//g' -e '/^$/d' >> output.txt");
+    
+
     return 0;
 }
 

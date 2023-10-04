@@ -13,11 +13,16 @@ long numCores;
 void benchmark(const char *bench, long cores) {
 
     char perf_variations_command[100];
+    // char perf_test[200];
+
 
     for (int i = 1; i <= TIMES; i++) {
 
         sprintf(perf_variations_command, "perf stat -d ./%s %ld", bench, cores);
         system(perf_variations_command);
+
+        // sprintf(perf_test, "{ perf stat -d ./%s %ld 2>&1 | grep \"L1-dcache-loads\\|L1-dcache-load-misses\\|seconds time elapsed\"; echo '$';} | sed -e 's/\\x1B\\[[0-9;]\\+[A-Za-z]//g' -e '/^$/d' >> output.txt", bench, cores);
+        // system(perf_test);
     }
     
 }
