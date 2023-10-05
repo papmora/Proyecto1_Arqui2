@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #define NUM_ITERATIONS (1 << 27)
 
+#define CACHE_LINE_SIZE 64
+
 // Adjust the number of threads based on your requirements
-#define MAX_THREADS 16
+#define MAX_THREADS (CACHE_LINE_SIZE / sizeof(int))
 
 // Defalut Thread value( - Single Thread - )
 int NUM_THREADS = 1;
@@ -13,48 +16,66 @@ int NUM_THREADS = 1;
 // Final Value
 volatile int finalValue = 0;
 
-// Struct to hold thread-specific data
-struct ThreadData {
-    int counter;
-};
+// Thread-local variables to hold counters
+__thread int threadCounter = 0;
 
 // Incrementing Function
 void* increase(void* arg) {
-    struct ThreadData* data = (struct ThreadData*)arg;
+    
+    int elementsPerThread = NUM_ITERATIONS / NUM_THREADS;
 
-    int elementsPerThread = NUM_ITERATIONS / MAX_THREADS;
+    printf("Thread %ld: threadCounter address: %p\n", (long)arg, &threadCounter);
 
     for (int i = 0; i < elementsPerThread; i++) {
-        data->counter++;
+        threadCounter++;
     }
 
     // Final value addition
-    finalValue += data->counter;
+    finalValue += threadCounter;
 
     return NULL;
 }
 
 // Printing
 int print() {
-    printf("Threads: %d\n", MAX_THREADS);
+
+    printf("Threads: %d\n", NUM_THREADS);
 
     printf("Final Value - %d\n", finalValue);
     return 0;
 }
 
-int main() {
-    // Threads creations
-    pthread_t threads[MAX_THREADS];
-    struct ThreadData threadData[MAX_THREADS];
+int main(int argc, char* argv[]) {
 
-    for (int i = 0; i < MAX_THREADS; i++) {
-        threadData[i].counter = 0;
-
-        // Threads Creation
-        pthread_create(&threads[i], NULL, increase, &threadData[i]);
+    // Validation
+    if (argc != 2) {
+        printf("Usage: %s <num_threads>\n", argv[0]);
+        return 1;
     }
 
-    for (int i = 0; i < MAX_THREADS; i++) {
+    // Update Number of Threads
+    NUM_THREADS = atoi(argv[1]);
+
+    if (NUM_THREADS <= 0 || NUM_THREADS > MAX_THREADS) {
+
+        printf("Invalid number of threads. Maximum supported: %ld\n", MAX_THREADS);
+        
+        return 1;
+    }
+
+    // Threads creations
+    pthread_t threads[MAX_THREADS];
+
+    for (int i = 0; i < NUM_THREADS; i++) {
+
+        intptr_t thread_id = (intptr_t)i;
+
+        // Threads Creation
+        pthread_create(&threads[i], NULL, increase, (void*)thread_id);
+    }
+
+    for (int i = 0; i < NUM_THREADS; i++) {
+
         pthread_join(threads[i], NULL);
     }
 
@@ -62,4 +83,3 @@ int main() {
 
     return 0;
 }
-

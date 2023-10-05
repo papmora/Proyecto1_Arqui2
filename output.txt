@@ -1,40 +1,41 @@
-     1 734 960 306      L1-dcache-loads                  #  292,772 M/sec                       (62,44%)
-        34 296 943      L1-dcache-load-misses            #    1,98% of all L1-dcache accesses   (62,16%)
-       0,709440207 seconds time elapsed
+
+     1 655 967 241      L1-dcache-loads                  #  280,067 M/sec                       (62,64%)
+        38 431 938      L1-dcache-load-misses            #    2,32% of all L1-dcache accesses   (61,99%)
+       0,748260452 seconds time elapsed
 $
-     1 722 642 307      L1-dcache-loads                  #  284,872 M/sec                       (63,02%)
-        35 703 279      L1-dcache-load-misses            #    2,07% of all L1-dcache accesses   (62,38%)
-       0,714259000 seconds time elapsed
+     1 630 261 147      L1-dcache-loads                  #  266,134 M/sec                       (62,35%)
+        43 848 621      L1-dcache-load-misses            #    2,69% of all L1-dcache accesses   (62,01%)
+       0,730883406 seconds time elapsed
 $
-     1 710 882 368      L1-dcache-loads                  #  296,236 M/sec                       (62,93%)
-        43 951 668      L1-dcache-load-misses            #    2,57% of all L1-dcache accesses   (62,41%)
-       0,720205338 seconds time elapsed
+     1 683 543 469      L1-dcache-loads                  #  277,675 M/sec                       (63,25%)
+        41 250 102      L1-dcache-load-misses            #    2,45% of all L1-dcache accesses   (62,39%)
+       0,704551253 seconds time elapsed
 $
-     1 614 151 971      L1-dcache-loads                  #  273,604 M/sec                       (62,65%)
-        54 664 127      L1-dcache-load-misses            #    3,39% of all L1-dcache accesses   (61,87%)
-       0,727272741 seconds time elapsed
+     1 683 081 381      L1-dcache-loads                  #  286,355 M/sec                       (63,13%)
+        43 483 453      L1-dcache-load-misses            #    2,58% of all L1-dcache accesses   (62,45%)
+       0,752187941 seconds time elapsed
 $
-     1 686 884 420      L1-dcache-loads                  #  274,394 M/sec                       (62,74%)
-        36 897 515      L1-dcache-load-misses            #    2,19% of all L1-dcache accesses   (62,58%)
-       0,745134921 seconds time elapsed
+     1 669 867 410      L1-dcache-loads                  #  274,047 M/sec                       (62,84%)
+        45 834 345      L1-dcache-load-misses            #    2,74% of all L1-dcache accesses   (62,12%)
+       0,764015430 seconds time elapsed
 $
-     1 674 690 599      L1-dcache-loads                  #  270,029 M/sec                       (62,34%)
-        38 278 790      L1-dcache-load-misses            #    2,29% of all L1-dcache accesses   (62,02%)
-       0,735601842 seconds time elapsed
+     1 659 815 013      L1-dcache-loads                  #  281,921 M/sec                       (62,50%)
+        46 391 027      L1-dcache-load-misses            #    2,79% of all L1-dcache accesses   (61,68%)
+       0,741919501 seconds time elapsed
 $
-     1 717 786 727      L1-dcache-loads                  #  282,301 M/sec                       (62,94%)
-        35 407 651      L1-dcache-load-misses            #    2,06% of all L1-dcache accesses   (62,52%)
-       0,734998215 seconds time elapsed
+     1 624 164 724      L1-dcache-loads                  #  268,308 M/sec                       (62,72%)
+        49 184 894      L1-dcache-load-misses            #    3,03% of all L1-dcache accesses   (62,09%)
+       0,746761494 seconds time elapsed
 $
-     1 711 049 225      L1-dcache-loads                  #  287,150 M/sec                       (62,73%)
-        42 111 296      L1-dcache-load-misses            #    2,46% of all L1-dcache accesses   (62,54%)
-       0,705432850 seconds time elapsed
+     1 653 257 315      L1-dcache-loads                  #  265,592 M/sec                       (61,91%)
+        44 028 893      L1-dcache-load-misses            #    2,66% of all L1-dcache accesses   (61,86%)
+       0,755289074 seconds time elapsed
 $
-     1 646 584 196      L1-dcache-loads                  #  265,214 M/sec                       (62,47%)
-        38 519 061      L1-dcache-load-misses            #    2,34% of all L1-dcache accesses   (62,07%)
-       0,721717319 seconds time elapsed
+     1 669 925 405      L1-dcache-loads                  #  274,135 M/sec                       (62,19%)
+        43 550 454      L1-dcache-load-misses            #    2,61% of all L1-dcache accesses   (61,82%)
+       0,719605258 seconds time elapsed
 $
-     1 670 489 138      L1-dcache-loads                  #  277,352 M/sec                       (62,46%)
-        37 939 242      L1-dcache-load-misses            #    2,27% of all L1-dcache accesses   (61,77%)
-       0,735982796 seconds time elapsed
+     1 794 173 970      L1-dcache-loads                  #  319,561 M/sec                       (63,11%)
+        36 279 387      L1-dcache-load-misses            #    2,02% of all L1-dcache accesses   (61,88%)
+       0,693872997 seconds time elapsed
 $
