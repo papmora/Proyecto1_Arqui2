@@ -24,11 +24,11 @@ void* increase(void* arg) {
     
     int elementsPerThread = NUM_ITERATIONS / NUM_THREADS;
 
-    printf("Thread %ld: threadCounter address: %p\n", (long)arg, &threadCounter);
-
     for (int i = 0; i < elementsPerThread; i++) {
         threadCounter++;
     }
+
+    printf("Thread %ld: threadCounter address: %p Value: %d\n", (long)arg, &threadCounter, threadCounter);
 
     // Final value addition
     finalValue += threadCounter;

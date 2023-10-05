@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -lpthread
 
 .PHONY: all clean
 
-all: benchmarkOne benchmarkTwo benchmarkOneS1 benchmarkOneS2 controller systemInfo
+all: benchmarkOne benchmarkTwo benchmarkOneS1 benchmarkOneS2 benchmarkTwoS1 benchmarkTwoS2 controller systemInfo
 
 benchmarkOne: benchmarkOne.c
 	$(CC) $(CFLAGS) -o $@ $^
@@ -19,6 +19,12 @@ benchmarkOneS1: benchmarkOneS1.c
 benchmarkOneS2: benchmarkOneS2.c
 	$(CC) $(CFLAGS) -o $@ $^
 
+benchmarkTwoS1: benchmarkTwoS1.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+benchmarkTwoS2: benchmarkTwoS2.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
 controller: controller.c
 	$(CC) $(CFLAGS) -o $@ $^
 
@@ -29,4 +35,4 @@ systemInfo: systemInfo.c
 # 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -f controller benchmarkOne benchmarkTwo benchmarkOneS1 benchmarkOneS2 systemInfo perf.data perf.data.old
+	rm -f controller benchmarkOne benchmarkTwo benchmarkOneS1 benchmarkOneS2 benchmarkTwoS1 benchmarkTwoS2 systemInfo perf.data perf.data.old

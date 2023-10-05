@@ -12,6 +12,7 @@ const int MAX_THREADS = CACHE_LINE_SIZE / sizeof(std::atomic<int>);
 // Struct para almacenar contadores
 struct Counter {
     std::atomic<int> counter;
+    char padding[CACHE_LINE_SIZE - sizeof(std::atomic<int>)];
     Counter() : counter(0) {}
 };
 

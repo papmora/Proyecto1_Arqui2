@@ -4,18 +4,17 @@
 #include <vector>
 
 const int NUM_ITERATIONS = (1 << 27);
-
 const int CACHE_LINE_SIZE = 64;
-
 const int MAX_THREADS = CACHE_LINE_SIZE / sizeof(std::atomic<int>);
 
-// Struct para almacenar contadores
+// Struct to store counters
 struct Counter {
     std::atomic<int> counter;
     Counter() : counter(0) {}
 };
 
-Counter counters[MAX_THREADS];
+// Thread-local variables to hold counters
+thread_local Counter tls_counters[MAX_THREADS];
 
 // Valor predeterminado de hilos (- Un solo hilo -)
 int NUM_THREADS = 1;
@@ -26,7 +25,7 @@ std::atomic<int> finalValue(0);
 // Inicialización
 void init() {
     for (int i = 0; i < NUM_THREADS; i++) {
-        counters[i].counter.store(0);
+        tls_counters[i].counter.store(0);
     }
 }
 
@@ -36,20 +35,18 @@ void increase(int threadId) {
 
     // Incrementos
     for (int i = 0; i < elementsPerThread; i++) {
-        counters[threadId].counter.fetch_add(1);
+        tls_counters[threadId].counter.fetch_add(1);
     }
 
+    std::cout << "Counters[" << threadId << "] - " << &tls_counters[threadId] << " - "<< tls_counters[threadId].counter.load() << std::endl;
     // Suma final
-    finalValue.fetch_add(counters[threadId].counter.load());
+    finalValue.fetch_add(tls_counters[threadId].counter.load());
 }
 
 // Impresión
 int print() {
+    
     std::cout << "Threads: " << NUM_THREADS << std::endl;
-
-    for (int i = 0; i < NUM_THREADS; i++) {
-        std::cout << "Counters[" << i << "] - " << &counters[i] << " - " << counters[i].counter.load() << std::endl;
-    }
 
     int value = finalValue.load();
     std::cout << "Final Value - " << value << std::endl;
@@ -91,3 +88,4 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+

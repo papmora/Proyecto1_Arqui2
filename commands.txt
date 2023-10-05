@@ -33,3 +33,8 @@ Generate perf.data:
  Analizar perf.data:
  - perf report -i outputname.data
  - perf report -k /tmp/vmlinux -i outputname.data
+
+Thread Local Storage (TLS):
+Is the mechanism by which each thread in a given multithreaded process allocates storage for 
+thread-specific data. In standard multithreaded programs, data is shared among all threads of 
+a given process, whereas thread local storage is the mechanism for allocating per-thread data
