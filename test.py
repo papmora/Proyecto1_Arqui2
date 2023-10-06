@@ -1,22 +1,46 @@
 import os
+import subprocess
+    
+def getThreadsPerCore():
+    # Run the lscpu command and capture its output
+    command = "lscpu | grep 'Thread(s) per core'"
+    output = subprocess.check_output(command, shell=True, text=True)
 
-def getCores():
-    try:
-        # Get Number of Cores
-        cores = os.sysconf(os.sysconf_names['SC_NPROCESSORS_ONLN'])
-        print("Cores:", cores)
-        return int(cores)
-    except Exception as e:
-        print("Error:", e)
-        return None
+    # Parse the value from the output
+    lines = output.strip().split('\n')
+    if lines:
+        line = lines[0]
+        parts = line.split(':')
+        if len(parts) == 2:
+            threads_per_core = int(parts[1].strip())
+            # print("Threads per core:", threads_per_core)
+            return threads_per_core
+    return None
+
+def getCoresPerSocket():
+    # Run the lscpu command and capture its output
+    command = "lscpu | grep 'Core(s) per socket'"
+    output = subprocess.check_output(command, shell=True, text=True)
+
+    # Parse the value from the output
+    lines = output.strip().split('\n')
+    if lines:
+        line = lines[0]
+        parts = line.split(':')
+        if len(parts) == 2:
+            cores_per_socket = int(parts[1].strip())
+            # print("Cores per socket:", cores_per_socket)
+            return cores_per_socket
+    return None
 
 def main_menu():
 
     # System Information
     os.system(f"./systemInfo benchmarkOne")
 
-    cores = getCores()
-
+    threadsPerCore = getThreadsPerCore()
+    coresPerSocket = getCoresPerSocket()
+    totalThreads = threadsPerCore * coresPerSocket
     while True:
         print("Options:")
         print("1. Execute Single-Threading Benchmark")
@@ -29,7 +53,7 @@ def main_menu():
             os.system(f"./controller benchmarkTwo 1")
 
         elif choice == '2':
-            os.system(f"./controller benchmarkTwo {cores}")
+            os.system(f"./controller benchmarkTwo {totalThreads}")
 
         elif choice == '3':
             break

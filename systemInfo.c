@@ -7,6 +7,7 @@
 
 // System Information
 int systemInformation(const char *code) {
+
     // Guardar info en txt
     system("lscpu > lscpu_output.txt");
 
@@ -55,11 +56,11 @@ int systemInformation(const char *code) {
 
     // Obtencion precisa de CPU y Threads
     long num_cores = sysconf(_SC_NPROCESSORS_ONLN);
-    long num_threads = sysconf(_SC_NPROCESSORS_CONF);
+    // long num_threads = sysconf(_SC_NPROCESSORS_CONF);
 
     printf("----- Especificaciones del sistema para %s -----\n\n", code);
     printf("Number of Cores: %21ld\n", num_cores);
-    printf("Number of Threads: %19ld\n", num_threads);
+    // printf("Number of Threads: %19ld\n", num_threads);
     system("lscpu | grep 'Thread(s) per core'");
     system("lscpu | grep 'Core(s) per socket'");
     printf("RAM Memory: %29.2f GB\n", total_memory_gb);
