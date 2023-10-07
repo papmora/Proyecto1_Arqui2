@@ -8,28 +8,28 @@ CXXFLAGS = -Wall -lpthread
 all: benchmarkOne benchmarkTwo benchmarkOneS1 benchmarkOneS2 benchmarkTwoS1 benchmarkTwoS2 controller systemInfo
 
 benchmarkOne: benchmarkOne.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(CFLAGS)
 
 benchmarkTwo: benchmarkTwo.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS) 
 
 benchmarkOneS1: benchmarkOneS1.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC)  -o $@ $^ $(CFLAGS)
 
 benchmarkOneS2: benchmarkOneS2.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(CFLAGS) 
 
 benchmarkTwoS1: benchmarkTwoS1.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX)  -o $@ $^ $(CXXFLAGS)
 
 benchmarkTwoS2: benchmarkTwoS2.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX)  -o $@ $^ $(CXXFLAGS)
 
 controller: controller.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC)  -o $@ $^ $(CFLAGS)
 
 systemInfo: systemInfo.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC)  -o $@ $^ $(CFLAGS)
 
 # delete: delete.c
 # 	$(CC) $(CFLAGS) -o $@ $^

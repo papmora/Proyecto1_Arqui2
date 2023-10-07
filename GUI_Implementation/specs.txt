@@ -1,0 +1,21 @@
+Thread(s) per core:                 2
+Core(s) per socket:                 2
+L1d cache:                          64 KiB
+L2 cache:                           512 KiB
+L3 cache:                           3 MiB
+Model name:                         Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz
+This: t
+----- Especificaciones del sistema para t -----
+
+Number of Cores:                     4
+RAM Memory:                         19.40 GB
+Cache L1:
+Line size: 64 bytes
+Instance size: 32768 bytes
+Cache L2:
+Line size: 64 bytes
+Instance size: 262144 bytes
+Cache L3:
+Tamaño de línea: 64 bytes
+Instance size: 3145728 bytes
+Processor:

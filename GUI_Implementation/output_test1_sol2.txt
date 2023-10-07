@@ -1,0 +1,40 @@
+       526 963 255      L1-dcache-loads           #    1,506 G/sec                    (64,62%)
+           200 878      L1-dcache-load-misses     #    0,04% of all L1-dcache accesses  (65,35%)
+       0,209242326 seconds time elapsed
+$
+       504 071 815      L1-dcache-loads           #    1,505 G/sec                    (69,55%)
+           203 498      L1-dcache-load-misses     #    0,04% of all L1-dcache accesses  (70,80%)
+       0,195050605 seconds time elapsed
+$
+       524 895 700      L1-dcache-loads           #    1,531 G/sec                    (64,09%)
+           166 269      L1-dcache-load-misses     #    0,03% of all L1-dcache accesses  (69,36%)
+       0,163434211 seconds time elapsed
+$
+       538 774 899      L1-dcache-loads           #    1,585 G/sec                    (64,64%)
+           238 119      L1-dcache-load-misses     #    0,04% of all L1-dcache accesses  (63,64%)
+       0,161784228 seconds time elapsed
+$
+       521 160 054      L1-dcache-loads           #    1,480 G/sec                    (71,61%)
+           173 493      L1-dcache-load-misses     #    0,03% of all L1-dcache accesses  (68,96%)
+       0,182751941 seconds time elapsed
+$
+       536 580 177      L1-dcache-loads           #    1,535 G/sec                    (59,96%)
+           175 791      L1-dcache-load-misses     #    0,03% of all L1-dcache accesses  (63,76%)
+       0,165555603 seconds time elapsed
+$
+       537 607 832      L1-dcache-loads           #    1,543 G/sec                    (71,92%)
+           157 024      L1-dcache-load-misses     #    0,03% of all L1-dcache accesses  (64,39%)
+       0,207200708 seconds time elapsed
+$
+       532 797 414      L1-dcache-loads           #    1,587 G/sec                    (64,35%)
+           207 950      L1-dcache-load-misses     #    0,04% of all L1-dcache accesses  (67,32%)
+       0,182552146 seconds time elapsed
+$
+       530 109 899      L1-dcache-loads           #    1,520 G/sec                    (71,20%)
+           150 579      L1-dcache-load-misses     #    0,03% of all L1-dcache accesses  (70,40%)
+       0,153281778 seconds time elapsed
+$
+       537 891 361      L1-dcache-loads           #    1,540 G/sec                    (67,93%)
+           189 083      L1-dcache-load-misses     #    0,04% of all L1-dcache accesses  (65,72%)
+       0,164145761 seconds time elapsed
+$
